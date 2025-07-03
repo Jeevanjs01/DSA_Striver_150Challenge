@@ -1,17 +1,18 @@
 #include <iostream>
 using namespace std;
+void ShiftArrayBy1(int arr[], int size) {
+    int temp = arr[size - 1];
 
-void leftRotateByOne(int arr[], int n) {
-    if (n <= 1)
-        return;
-
-    int first = arr[0];
-
-    for (int i = 0; i < n - 1; i++) {
-        arr[i] = arr[i + 1];
+    for (int i = size - 1; i > 0; i--) {
+        arr[i] = arr[i - 1];
     }
 
-    arr[n - 1] = first;
+    arr[0] = temp;
+
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 }
 
 int main() {
@@ -25,13 +26,7 @@ int main() {
         cin >> arr[i];
     }
 
-    leftRotateByOne(arr, n);
-
-    cout << "Array after left rotation by one: ";
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
+    ShiftArrayBy1(arr, n);
 
     return 0;
 }
